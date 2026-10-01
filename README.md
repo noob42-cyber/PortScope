@@ -136,7 +136,7 @@ TCP ports range from:
 
 Commonly referenced ranges include:
 
-|Range	|Description|
+| Range	| Description |
 |       |           |
 | 0–1023 |	Well-known ports |
 | 1024–49151 |	Registered ports |
