@@ -134,18 +134,10 @@ TCP ports range from:
 
 `0 - 65535`
 
-Commonly referenced ranges include:
-
-|Range	|Description|
-|       |           |
-| 0–1023 |	Well-known ports |
-| 1024–49151 |	Registered ports |
-| 49152–65535 |	Dynamic/private ports |
-
 
 The scanner can scan any port range supplied by the user.
 
-Project Structure
+### Project Structure
 
 tcp-scanner/  
 ├── main.py  
@@ -155,7 +147,7 @@ tcp-scanner/
 
 ## Responsible Use
 
-Use this scanner only against:
+**Use this scanner only against:**
 
 Your own computer
 
