@@ -147,7 +147,7 @@ tcp-scanner/
 
 ## Responsible Use
 
-Use this scanner only against:
+**Use this scanner only against:**
 
 Your own computer
 
