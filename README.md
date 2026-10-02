@@ -6,14 +6,13 @@ This project was created to understand how TCP connections, sockets, ports, time
 
 ## Features
 
-- Scan TCP ports on an IPv4 address
-- Custom start and end port
-- Detect open TCP ports
-- Configurable connection timeout
-- Live scanning progress
-- Concurrent port scanning for improved performance
-- Uses Python's built-in `socket` module
-- No external scanning libraries required
+- Scan TCP ports on an IPv4 address  
+- Custom start and end port  
+- Detect open TCP ports  
+- Live scanning progress  
+- Concurrent port scanning for improved performance  
+- Uses Python's built-in `socket` module  
+- No external scanning libraries required  
 
 ## Requirements
 
