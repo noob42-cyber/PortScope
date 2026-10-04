@@ -10,7 +10,6 @@ This project was created to understand how TCP connections, sockets, ports, time
 - Custom start and end port  
 - Detect open TCP ports  
 - Live scanning progress  
-- Concurrent port scanning for improved performance  
 - Uses Python's built-in `socket` module  
 - No external scanning libraries required  
 
