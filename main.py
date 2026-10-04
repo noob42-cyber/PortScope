@@ -1,4 +1,4 @@
-from port_scanner import port_scanner_tcp
+from port_scanner import tcp_scanner_port
 import sys
 
 print("Default IP - 127.0.0.1")
@@ -24,10 +24,11 @@ def main():
         if end_port < start_port:
             print("Invalid port order start port must be less than end port")
         else:
-            print("1.Scan the IP\n2Exit.")
+            print("1.Scan the IP\n2.Exit.")
             usr = input("Choose a option:-")
             if usr == "1":
-                port_scanner_tcp(ip,start_port,end_port)
+                worker = input("Choose no.of workers you wanna do the scanning:-")
+                tcp_scanner_port(worker,ip,start_port,end_port)
             elif usr =="2":
                 print("Exiting...")
                 sys.exit()
