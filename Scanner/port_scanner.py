@@ -1,7 +1,7 @@
 import socket
 import logging
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor,as_completed
+from concurrent.futures import ThreadPoolExecutor
 
 log_file = Path(__file__).parent/"scan.log"
 
