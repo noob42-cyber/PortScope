@@ -1,40 +1,34 @@
 from port_scanner import tcp_scanner_port
 import sys
+import argparse
 
-print("Default IP - 127.0.0.1")
-ip = input("Enter ip or url you want to scan:-")
-if not ip:
-    ip = "127.0.0.1"
-print("Default Port:-1")
-start_port = input("Enter the port no.from where you wanna start scanning:-")
-if not start_port:
-    start_port = 1
-else:
-    start_port = int(start_port)
-print("Default Port- 65535")
-end_port = input("Enter the port at which you wanna stop scanning:-")
-if not end_port:
-    end_port = 65535 
-else:
-    end_port = int(end_port)
 
+parser = argparse.ArgumentParser(prog="main",description="Main program of port scanner")
+parser.add_argument('-i',"--ip",help="IP adress to scan",default="152.58.132.106")
+parser.add_argument('-s',"--start",help="Starting Port",type=int,default = 1)
+parser.add_argument('-e',"--end",help="Ending Port",type=int,default=65532)
+parser.add_argument('-w',"--worker",help="No.of Workers",type=int,default=20)
+
+args = parser.parse_args()
 
 def main():
     while True:
-        if end_port < start_port:
-            print("Invalid port order start port must be less than end port")
+        print("1.Scan the IP\n2.Exit.")
+        usr = input("Choose a option:-")
+        if usr == "1":
+            ip_address = args.ip
+            starting_port = args.start
+            ending_port = args.end
+            workers = args.worker
+            tcp_scanner_port( ip_address , starting_port , ending_port , workers)
+        elif usr =="2":
+            print("Exiting...")
+            sys.exit()
         else:
-            print("1.Scan the IP\n2.Exit.")
-            usr = input("Choose a option:-")
-            if usr == "1":
-                worker = input("Choose no.of workers you wanna do the scanning:-")
-                tcp_scanner_port(worker,ip,start_port,end_port)
-            elif usr =="2":
-                print("Exiting...")
-                sys.exit()
-            else:
-                print("Invalid option")
+    
+            print("Invalid option")
             
 
 main()
+
         
