@@ -14,9 +14,9 @@ logging.basicConfig(level = logging.DEBUG,filename=log_file,format='%(asctime)s 
 def port_scan(ip_adress,port):
     try:
         with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
-            s.settimeout(1)
+            s.settimeout(3.0)
             s.connect((ip_adress,port))
-            logging.info(f"Port {port} ports open")
+            print(f"Port Open :{port}:{socket.getservbyport(port)}")
     except ConnectionRefusedError:
         logging.warning(f"Port{port}:Connection refused")
     except TimeoutError:
