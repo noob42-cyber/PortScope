@@ -6,7 +6,7 @@ lazy import argparse
 parser = argparse.ArgumentParser(prog="main",description="Main program of port scanner")
 parser.add_argument('-i',"--ip",help="IP adress to scan",default="127.0.0.1")
 parser.add_argument('-s',"--start",help="Starting Port",type=int,default = 1)
-parser.add_argument('-e',"--end",help="Ending Port",type=int,default=100)
+parser.add_argument('-e',"--end",help="Ending Port",type=int,default=65535)
 parser.add_argument('-c',"--count",help="Thread Count",type=int,default=20)
 parser.add_argument('-t',"--time",help = "Timeout for thread",type = float,default=1.0)
 
@@ -28,7 +28,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-        
-
