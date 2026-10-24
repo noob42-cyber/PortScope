@@ -2,14 +2,17 @@ from port_scanner import tcp_scanner_port
 import sys
 import argparse
 
+# Adding of arguments by argparse
 
 parser = argparse.ArgumentParser(prog="main",description="Main program of port scanner")
-parser.add_argument('-i',"--ip",help="IP adress to scan",default="152.58.132.106")
+parser.add_argument('-i',"--ip",help="IP adress to scan",default="127.0.0.1")
 parser.add_argument('-s',"--start",help="Starting Port",type=int,default = 1)
 parser.add_argument('-e',"--end",help="Ending Port",type=int,default=65535)
 parser.add_argument('-w',"--worker",help="No.of Workers",type=int,default=20)
 
 args = parser.parse_args()
+
+# Main Function of Scanner
 
 def main():
     while True:
@@ -29,6 +32,8 @@ def main():
             print("Invalid option")
             
 
-main()
+if __name__ == "__main__":
+    main()
+
 
         
