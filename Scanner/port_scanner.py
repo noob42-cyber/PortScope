@@ -1,5 +1,5 @@
-import socket
-import logging
+lazy import socket
+lazy import logging
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor,as_completed
 
