@@ -1,6 +1,5 @@
-from port_scanner import tcp_scanner_port
-import sys
-import argparse
+lazy import sys
+lazy import argparse
 
 # Adding of arguments by argparse
 
@@ -8,28 +7,19 @@ parser = argparse.ArgumentParser(prog="main",description="Main program of port s
 parser.add_argument('-i',"--ip",help="IP adress to scan",default="127.0.0.1")
 parser.add_argument('-s',"--start",help="Starting Port",type=int,default = 1)
 parser.add_argument('-e',"--end",help="Ending Port",type=int,default=65535)
-parser.add_argument('-w',"--worker",help="No.of Workers",type=int,default=20)
+parser.add_argument('-t',"--thread",help="Thread Count",type=int,default=20)
 
 args = parser.parse_args()
 
 # Main Function of Scanner
 
 def main():
-    while True:
-        print("1.Scan the IP\n2.Exit.")
-        usr = input("Choose a option:-")
-        if usr == "1":
-            ip_address = args.ip
-            starting_port = args.start
-            ending_port = args.end
-            workers = args.worker
-            tcp_scanner_port( ip_address , starting_port , ending_port , workers)
-        elif usr =="2":
-            print("Exiting...")
-            sys.exit()
-        else:
-    
-            print("Invalid option")
+    from port_scanner import tcp_scanner_port
+    ip_address = args.ip
+    starting_port = args.start
+    ending_port = args.end
+    workers = args.thread
+    tcp_scanner_port( ip_address , starting_port , ending_port , workers)
             
 
 if __name__ == "__main__":
