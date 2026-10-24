@@ -43,7 +43,7 @@ No additional dependencies are required.
 
 Run the scanner:
 ```
-python main.py -i IP  -s Starting Port -e Ending Port -w No.of workers
+python main.py -i IP  -s Starting Port -e Ending Port -w No.of workers -t TimeOut for Thread
 ```
  
 
