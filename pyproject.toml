@@ -7,7 +7,7 @@ name = "PortScope"
 version = "0.1.0"
 description = "A TCP Port Scanner using python sockets with custom port range and timeout"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.15"
 license = { text = "MIT" }
 authors = [
   { name = "noob42-cyber" }
