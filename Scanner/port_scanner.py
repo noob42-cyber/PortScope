@@ -1,7 +1,8 @@
 lazy import socket
 lazy import logging
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor,as_completed
+from concurrent.futures import ThreadPoolExecutor
+lazy import time
 
 log_file = Path(__file__).parent/"scan.log"
 
@@ -10,13 +11,13 @@ log_file = Path(__file__).parent/"scan.log"
 logging.basicConfig(level = logging.DEBUG,filename=log_file,format='%(asctime)s -%(levelname)s - %(message)s',filemode= 'a')
 
 # Port Scanner Logic to try to connect through sockets
-
-def port_scan(ip_adress,port):
+print("Port   Service  status")
+def port_scan(ip_adress,port,timeout):
     try:
         with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
-            s.settimeout(3.0)
+            s.settimeout(timeout)
             s.connect((ip_adress,port))
-            print(f"Port Open:{port}:{socket.getservbyport(port)}")
+            print(f"{port}   {socket.getservbyport(port)}  open")
             logging.info (f"Port {port} is open")
     except ConnectionRefusedError:
         logging.warning(f"Port{port}:Connection refused")
@@ -29,16 +30,16 @@ def port_scan(ip_adress,port):
 
 # ThreadPollExecutor for concurrent trail of connecting to ports
 
-def tcp_scanner_port(ip_address,starting_port,ending_port,workers):
-
+def tcp_scanner_port(ip_address,starting_port,ending_port,workers,timeout):
+    start = time.time()
     with ThreadPoolExecutor(max_workers = workers) as executor:
             futures = [
-               executor.submit(port_scan,ip_address,port)
+               executor.submit(port_scan,ip_address,port,timeout)
                for port in range(starting_port,ending_port+1)
            ]
-            for future in as_completed(futures):
-                result = future.result()
+    elapsed = time.time()-start
     logging.info("Scanning Completed")
+    return {"elapsed":elapsed}
     
 
         
