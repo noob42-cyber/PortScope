@@ -16,7 +16,7 @@ This project was created to understand how TCP connections, sockets, ports, time
 
 ## Requirements
 
-- Python 3.11 or newer
+- Python 3.15 or newer
 - No external Python packages are required
 
 Check your Python version with:
