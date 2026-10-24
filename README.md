@@ -11,7 +11,8 @@ This project was created to understand how TCP connections, sockets, ports, time
 - Detect open TCP ports  
 - Live scanning progress  
 - Uses Python's built-in `socket` module  
-- No external scanning libraries required  
+- No external scanning libraries required 
+- Concurrent Port Scanning 
 
 ## Requirements
 
@@ -42,30 +43,14 @@ No additional dependencies are required.
 
 Run the scanner:
 ```
-python main.py
+python main.py -i IP  -s Starting Port -e Ending Port -w No.of workers
 ```
-The scanner will ask for:
-
-1. Target IPv4 address
-
-
-2. Starting port
-
-
-3. Ending port
-
-
-
-Example:
-
-Enter target IP: 192.168.1.10  
-Enter start port: 1  
-Enter end port: 1000  
+ 
 
 Example output:
 
-Port 135 is OPEN  
-Port 445 is OPEN  
+Port Open : 22 : ssh  
+Port Open : 80 : http
 
 Only ports that successfully accept a TCP connection are displayed as open.
 
@@ -116,7 +101,7 @@ A connection timeout prevents the scanner from waiting indefinitely for a respon
 
 For example:
 ```python
-s.settimeout(0.5)
+s.settimeout(3.0)
 ```
 
 The timeout value can be adjusted depending on the environment.
