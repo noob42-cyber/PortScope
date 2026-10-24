@@ -16,7 +16,8 @@ def port_scan(ip_adress,port):
         with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
             s.settimeout(3.0)
             s.connect((ip_adress,port))
-            print(f"Port Open :{port}:{socket.getservbyport(port)}")
+            print(f"Port Open:{port}:{socket.getservbyport(port)}")
+            logging.info (f"Port {port} is open")
     except ConnectionRefusedError:
         logging.warning(f"Port{port}:Connection refused")
     except TimeoutError:
