@@ -14,15 +14,15 @@ logging.basicConfig(level = logging.DEBUG,filename=log_file,format='%(asctime)s 
 print("Port   Service  status")
 def port_scan(ip_adress,port,timeout):
     try:
-            with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
-                s.settimeout(timeout)
-                s.connect((ip_adress,port))
-                try:
-                     service = socket.getservbyport(port)
-                except OSError:
-                     service = "Unknown"
-                print(f"{port}   {service}  open")
-            logging.info (f"Port {port} is open")
+        with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
+            s.settimeout(timeout)
+            s.connect((ip_adress,port))
+            try:
+                service = socket.getservbyport(port)
+            except OSError:
+                 service = "Unknown"
+        print(f"{port}   {service}  open")
+        logging.info (f"Port {port} is open")
     except ConnectionRefusedError:
         logging.warning(f"Port{port}:Connection refused")
     except TimeoutError:
