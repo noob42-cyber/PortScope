@@ -27,7 +27,7 @@ def time_validator(timeout):
 
 def worker_validator(workers):
     try:
-        if workers < 0:
+        if workers <= 0:
             return "Invalid no.of workers"
         else:
             return True
