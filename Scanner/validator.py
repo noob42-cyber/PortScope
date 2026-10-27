@@ -9,7 +9,7 @@ def ip_validator(ip_address):
 
 def port_validator(starting_port,ending_port):
     try:
-        if (starting_port < 0) or (ending_port < 0 ) or starting_port > ending_port :
+        if (starting_port < 0) or (ending_port < 0 ) or (starting_port > ending_port) or (starting_port < 0) or (ending_port > 65535) :
             return "Invalid Ports"
         else:
             return True
