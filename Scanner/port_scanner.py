@@ -1,7 +1,7 @@
 lazy import socket
 lazy import logging
-from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
+lazy from pathlib import Path
+lazy from concurrent.futures import ThreadPoolExecutor
 lazy import time
 
 log_file = Path(__file__).parent/"scan.log"
@@ -29,8 +29,6 @@ def port_scan(ip_adress,port,timeout):
         logging.debug(f"Port {port} : Connection time timeout")
     except OSError as e:
             logging.error(f"Port{port}:OS Error - {e}")
-    finally:
-        s.close()
 
 # ThreadPollExecutor for concurrent trail of connecting to ports
 
