@@ -1,4 +1,5 @@
 lazy import ipaddress
+lazy import socket
 
 def ip_validator(ip_address):
     try:
@@ -34,4 +35,10 @@ def worker_validator(workers):
     except TypeError:
         return "Invalid no.of workers"
 
+def service_validator(port):
+    try:
+        service = socket.getservbyport(port,"tcp")
+        return service
+    except OSError:
+        return "Unknown"
 
