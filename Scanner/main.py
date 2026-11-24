@@ -10,7 +10,6 @@ parser.add_argument('-s',"--start",help="Starting Port",type=int,default = 1)
 parser.add_argument('-e',"--end",help="Ending Port",type=int,default=65535)
 parser.add_argument('-c',"--count",help="Thread Count",type=int,default=20)
 parser.add_argument('-t',"--time",help = "Timeout for thread",type = float,default=3.0)
-parser.add_argument('-w',"--web",help = "Scan the website url",type = str)
 
 args = parser.parse_args()
 
@@ -24,10 +23,10 @@ def main():
       time_validator(args.time)
       ]
     if all(result is True for result in validations):
-        start = time.time()
-        result = tcp_scanner_port( args.ip , args.start , args.end , args.count,args.time)
-        elapse = int(time.time()-start)*1000
-        print(f" Target: {args.ip} \n Range : {args.start}-{args.end} \n Time taken : {elapse}ms ")
+        start = time.perf_counter()
+        result = tcp_scanner_port( args.ip, args.start , args.end , args.count,args.time)
+        elapse = int(time.perf_counter()-start)*1000
+        print(f" Target: {args.ip} \n Range : {args.start}-{args.end} \n Time taken : {elapse:.2f}ms ")
         for i in range (len(result)):
             print(result[i])
 
