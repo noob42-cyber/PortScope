@@ -3,6 +3,7 @@ lazy import logging
 lazy from pathlib import Path
 lazy from concurrent.futures import ThreadPoolExecutor,as_completed 
 lazy from validator import service_validator
+lazy import ipaddress
 
 log_file = Path(__file__).parent/"scan.log"
 
@@ -10,11 +11,17 @@ log_file = Path(__file__).parent/"scan.log"
 
 logging.basicConfig(level = logging.DEBUG,filename=log_file,format='%(asctime)s -%(levelname)s - %(message)s',filemode= 'a')
 
-# Port Scanner Logic to try to connect through sockets
+# Port Scanner Logic to try to connect through sockets and checking the ip version
 def port_scan(ip_adress,port,timeout):
     service = service_validator(port)
     try:
-        with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
+        ip = ipaddress.ip_address(ip_adress)
+        if ip.version == 4:
+            address_family = socket.AF_INET
+        else:
+            address_family = socket.AF_INET6
+                     
+        with socket.socket(address_family,socket.SOCK_STREAM) as s:
             s.settimeout(timeout)
             s.connect((ip_adress,port))
         logging.info(f"Port {port} is open")
